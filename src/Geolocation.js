@@ -1,7 +1,7 @@
 import React from 'react';
-import './Header.css';
+import './Geolocation.css';
 
-function Header() {
+function Geolocation() {
   return (
     <div className="header">
       <div className="headerText">Weather here</div>
@@ -10,4 +10,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Geolocation;
