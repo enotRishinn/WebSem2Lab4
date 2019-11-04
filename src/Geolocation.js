@@ -17,7 +17,12 @@ render() {
 }
 
 getGeolocation() {
-
+  if (navigator.geolocation) {
+    coords {
+      latitude: position.coords.latitude;
+      longitude : position.coords.longitude;
+    }
+  }
 }
 
 export default Geolocation;
