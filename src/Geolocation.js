@@ -1,7 +1,8 @@
 import React from 'react';
 import './Geolocation.css';
+import WeatherGeolocation from './WeatherGeolocation'
 import { connect } from "react-redux";
-import { loadGeolocation, fetchGeolocationError } from './actions/geolocationAction';
+import { setCoords, fetchGeolocationError } from './actions/geolocationAction';
 import { fetchWeatherByCoords } from './actions/fetchWeatherByCoords';
 
 class Geolocation extends React.Component {
@@ -14,6 +15,13 @@ class Geolocation extends React.Component {
       <div className="header">
         <div className="headerText">Weather here</div>
         <button className="headerButton" onClick={() => this.getGeolocation()}>Update Geolocation</button>
+        {!this.props.error ? this.props.coords && (
+          <WeatherGeolocation
+            onFetch={() => this.props.fetchWeatherByCoords(this.props.coords)}
+            forecast={this.props.forecast}/>
+        ) : (
+          <div className="error">Error: {this.props.error}</div>
+        )}
       </div>
     );
   }
@@ -21,12 +29,13 @@ class Geolocation extends React.Component {
   getGeolocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        this.props.loadGeolocation({lat: position.coords.latitude, lon: position.coords.longitude});
-        this.props.fetchWeatherByCoords({lat: position.coords.latitude, lon: position.coords.longitude});
+        this.props.setCoords({lat: position.coords.latitude, lon: position.coords.longitude});
+        console.log(this.props.coords);
+        this.props.fetchWeatherByCoords(this.props.coords);
       },
       () => {
-        this.props.loadGeolocation({lat: 55.45, lon: 37.36});
-        this.props.fetchWeatherByCoords({lat: 55.45, lon: 37.36});
+        this.props.setCoords({lat: 55.45, lon: 37.36});
+        this.props.fetchWeatherByCoords(this.props.coords);
       });
     } else {
       this.props.fetchGeolocationError('your browser does not support geolocation');
@@ -45,8 +54,8 @@ return {
 
 function mapDispatchToProps(dispatch) {
 return {
-  loadGeolocation: (coords) => {
-    dispatch(loadGeolocation(coords));
+  setCoords: (coords) => {
+    dispatch(setCoords(coords));
   },
 
   fetchWeatherByCoords: (coords) => {

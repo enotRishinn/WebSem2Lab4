@@ -1,6 +1,6 @@
-export function loadGeolocation(coords) {
+export function setCoords(coords) {
   return {
-    type: 'LOAD_GEOLOCATION',
+    type: 'SET_COORDS',
     payload: coords
   }
 }
