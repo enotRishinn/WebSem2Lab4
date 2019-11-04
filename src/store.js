@@ -10,4 +10,4 @@ favorites : favoriteReducer,
 
 const store = createStore (reducer, applyMiddleware(thunk));
 
-export deafault store;
+export default store;
