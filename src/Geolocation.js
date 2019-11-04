@@ -16,7 +16,7 @@ render() {
 }
 }
 
-const getGeolocation = () => {
+getGeolocation() {
 
 }
 
