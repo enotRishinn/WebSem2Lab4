@@ -20,6 +20,7 @@
   padding: 8px;
   font-size: 15px;
   font-weight: bold;
+  outline: none;
 }
 
 .header .headerButton:hover {
@@ -27,6 +28,10 @@
   border-color: #c18ce3;
   color: white;
   cursor: pointer;
+}
+
+.header .headerButton:active {
+  border-style: inset;
 }
 
 .error {
