@@ -1,10 +1,10 @@
-.FavoritesPanel {
+.CitiesPanel {
   padding: 1% 2%;
   font-size: 25px;
   margin-top: 30px;
 }
 
-.FavoritesPanel .FavoritesText {
+.CitiesPanel .CitiesText {
   font-family: 'Bitter', serif;
   color: #21224b;
   width: 50%;
@@ -12,7 +12,7 @@
   font-weight: bold;
 }
 
-.FavoritesInput {
+.CitiesInput {
   padding: 1%;
   outline: none;
   font-family: 'Bitter', serif;
@@ -25,7 +25,7 @@
   font-weight: bold;
 }
 
-.FavoritesButton {
+.CitiesButton {
   padding: 1%;
   outline: none;
   font-family: 'Bitter', serif;
@@ -38,13 +38,13 @@
   font-weight: bold;
 }
 
-.FavoritesButton:hover {
+.CitiesButton:hover {
   background-color: #586d7c;
   border-color: #c18ce3;
   color: white;
   cursor: pointer;
 }
 
-.FavoritesButton:active {
+.CitiesButton:active {
   border-style: inset;
 }

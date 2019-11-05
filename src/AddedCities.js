@@ -8,13 +8,15 @@ import { connect } from "react-redux";
 class AddedCities extends React.Component {
   render() {
     return (
-      <AddPanel onSubmit={(e) => this.addCity(e)} />
+      <AddPanel onSubmit={(e) => this.addNewCity(e)} />
 
     );
   }
 
-  function addCity() {
-    
+  addNewCity(e) {
+    e.preventDefault();
+    const cityName = e.currentTarget.elements.cityName.value;
+    this.props.addCity(cityName);
   }
 }
 
