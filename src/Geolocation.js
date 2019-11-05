@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { setCoords, fetchGeolocationError } from './actions/geolocationAction';
 import { fetchWeatherByCoords } from './actions/fetchWeatherByCoords';
 import Header from './Header'
+import Loader from './Loader'
 
 class Geolocation extends React.Component {
   componentDidMount() {
@@ -30,7 +31,7 @@ class Geolocation extends React.Component {
         console.log(this.props.forecast);
       },
       () => {
-        this.props.setCoords({lat: 55.45, lon: 37.36});
+        this.props.setCoords({lat: 51.51, lon: -0.13});
         this.props.fetchWeatherByCoords(this.props.coords);
       });
     } else {
@@ -42,8 +43,10 @@ class Geolocation extends React.Component {
     let weatherBlock = null;
     if(this.props.forecast) {
       weatherBlock = <WeatherData data={this.props.forecast}/>;
-    } else if (!this.props.error){
+    } else if (this.props.error){
       weatherBlock = <div className="error">Error: {this.props.error}</div>;
+    } else if (!this.props.forecast && !this.props.error) {
+      weatherBlock = <Loader/>
     }
     return weatherBlock;
   }
