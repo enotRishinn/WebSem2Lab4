@@ -33,6 +33,7 @@ class Geolocation extends React.Component {
       () => {
         this.props.setCoords({lat: 51.51, lon: -0.13});
         this.props.fetchWeatherByCoords(this.props.coords);
+        alert('Permission denied. Load weather from default coordinates');
       });
     } else {
       this.props.fetchGeolocationError('your browser does not support geolocation');
