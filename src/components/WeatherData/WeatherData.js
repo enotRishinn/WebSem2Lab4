@@ -2,6 +2,7 @@ import React from "react";
 import './WeatherData.css';
 
 class WeatherData extends React.Component {
+
   render() {
     return (
       <div className="WeatherBlock">
@@ -18,6 +19,7 @@ class WeatherData extends React.Component {
           <div className="Wind">Wind: {this.props.data.wind.speed} m/s</div>
           <div className="Coords">Coordinates: [{this.props.data.coord.lon}, {this.props.data.coord.lat}]</div>
         </div>
+
       </div>
     );
   }

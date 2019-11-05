@@ -1,11 +1,11 @@
 import React from 'react';
 import './Geolocation.css';
-import WeatherData from './WeatherData'
+import WeatherData from '../WeatherData/WeatherData'
 import { connect } from "react-redux";
-import { setCoords, fetchGeolocationError } from './actions/geolocationAction';
-import { fetchWeatherByCoords } from './actions/fetchWeatherByCoords';
-import Header from './Header'
-import Loader from './Loader'
+import { setCoords, fetchGeolocationError } from '../../actions/geolocationAction';
+import { fetchWeatherByCoords } from '../../actions/fetchWeatherByCoords';
+import Header from '../Header/Header'
+import Loader from '../Loader/Loader'
 
 class Geolocation extends React.Component {
   componentDidMount() {
@@ -27,7 +27,6 @@ class Geolocation extends React.Component {
       navigator.geolocation.getCurrentPosition(position => {
         this.props.setCoords({lat: position.coords.latitude, lon: position.coords.longitude});
         this.props.fetchWeatherByCoords(this.props.coords);
-        console.log(this.props.forecast);
       },
       () => {
         this.props.setCoords({lat: 51.51, lon: -0.13});

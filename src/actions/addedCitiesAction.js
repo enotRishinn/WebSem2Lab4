@@ -24,7 +24,7 @@ export function fetchAddedCitiesSuccess(response, cityName) {
 
 export function fetchAddedCitiesError(error, cityName) {
   return {
-    type: 'FETCH_ADDED_CITY_SUCCESS',
+    type: 'FETCH_ADDED_CITY_ERROR',
     payload: {
       error,
       cityName

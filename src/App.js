@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Geolocation from './Geolocation';
-import AddedCities from './AddedCities';
+import Geolocation from './components/Geolocation/Geolocation';
+import AddedCities from "./components/AddedCities/AddedCities";
 
 function App() {
   return (

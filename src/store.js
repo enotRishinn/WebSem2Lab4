@@ -7,13 +7,13 @@ const LOCAL_STORAGE_KEY = 'added_cities';
 
 const reducer = combineReducers({
 geolocation : geolocationReducer,
-added_cities : addedCitiesReducer,
+fav : addedCitiesReducer,
 })
 
 const store = createStore (reducer, applyMiddleware(thunk));
 
 store.subscribe(() => {
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...store.getState().added_cities.added_cities.keys()]));
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...store.getState().fav.favorites.keys()]));
 });
 
 export default store;

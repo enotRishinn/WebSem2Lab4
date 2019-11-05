@@ -1,39 +1,36 @@
-import { getAddedCitiesFromStorage } from '../LocalStorage';
+import getFavoritesFromStorage from "../LocalStorage";
+import { extractWeatherParams } from "../api";
 
 const initialState = {
-  added_cities: getAddedCitiesFromStorage()
+  favorites: getFavoritesFromStorage()
 };
 
-export default function addedCitiesReducer(state = initialState, action) {
+export default function favReducer(state = initialState, action) {
   state = {
     ...state,
     error: false,
-    added_cities: new Map(state.added_cities.cities)
+    favorites: new Map(state.favorites)
   };
 
   switch (action.type) {
     case 'ADD_CITY':
-      if (!state.added_cities.has(action.payload))
-        state.added_cities.set(action.payload);
+      if (!state.favorites.has(action.payload))
+        state.favorites.set(action.payload);
       break;
-
     case 'DELETE_CITY':
-      state.added_cities.delete(action.payload);
+      state.favorites.delete(action.payload);
       break;
-
     case 'FETCH_ADDED_CITY_SUCCESS':
-      state.added_cities.delete(action.payload.cityName);
-      state.added_cities.set(action.payload.response.cityName, action.payload.response);
+      const forecast = extractWeatherParams(action.payload.response);
+      state.favorites.delete(action.payload.cityName);
+      state.favorites.set(forecast.cityName, forecast);
       break;
-
     case 'FETCH_ADDED_CITY_ERROR':
       state.error = action.payload.error;
-      state.added_cities.delete(action.payload.cityName);
+      state.favorites.delete(action.payload.cityName);
       break;
-
     default:
       break;
   }
-
   return state;
 }

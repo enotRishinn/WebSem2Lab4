@@ -8,9 +8,9 @@ class Loader extends React.Component {
 
   render() {
     return (
-      <div class="wrapper">
-        <div class="loader-circle"></div>
-        <div class="loader-bottom">Please wait, weather is loading...</div>
+      <div className="wrapper">
+        <div className="loader-circle"></div>
+        <div className="loader-bottom">Please wait, weather is loading...</div>
       </div>
     );
   }
