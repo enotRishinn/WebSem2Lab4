@@ -1,5 +1,4 @@
-import { Actions } from "./actions/addedCitiesActions";
-import getAddedCitiesFromStorage from "../localStorage";
+import { getAddedCitiesFromStorage } from '../LocalStorage';
 
 const initialState = {
   added_cities: getAddedCitiesFromStorage()
@@ -24,7 +23,7 @@ export default function addedCitiesReducer(state = initialState, action) {
 
     case 'FETCH_ADDED_CITY_SUCCESS':
       state.added_cities.delete(action.payload.cityName);
-      state.added_cities.set(forecast.cityName, action.payload.response);
+      state.added_cities.set(action.payload.response.cityName, action.payload.response);
       break;
 
     case 'FETCH_ADDED_CITY_ERROR':

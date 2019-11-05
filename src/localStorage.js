@@ -1,4 +1,4 @@
-export default function getAddedCitiesFromStorage(key = 'added_cities') {
+export function getAddedCitiesFromStorage(key = 'added_cities') {
   const localStorageContent = JSON.parse(localStorage.getItem(key));
   let added_cities = [];
   if (localStorageContent !== null && Array.isArray(localStorageContent))

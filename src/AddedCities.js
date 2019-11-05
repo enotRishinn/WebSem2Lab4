@@ -1,6 +1,9 @@
 import React from 'react';
 import './AddedCities.css';
 import AddPanel from './AddPanel';
+import { addCity, deleteCity, fetchAddedCitiesError } from './actions/addedCitiesAction';
+import { fetchWeatherByCityName } from './actions/fetchWeatherByCityName';
+import { connect } from "react-redux";
 
 class AddedCities extends React.Component {
   render() {
@@ -20,11 +23,11 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addCity: (cityName) => {
-      dispatch(addFavorite(cityName));
+      dispatch(addCity(cityName));
     },
 
     deleteCity: (cityName) => {
-      dispatch(deleteFavorite(cityName));
+      dispatch(deleteCity(cityName));
     },
 
     fetchWeatherByCityName: (cityName) => {

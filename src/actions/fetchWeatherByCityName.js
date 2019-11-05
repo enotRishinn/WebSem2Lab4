@@ -1,4 +1,4 @@
-import { fetchAddedCitiesSuccess, fetchAddedCitiesError } from './addedCititesAction';
+import { fetchAddedCitiesSuccess, fetchAddedCitiesError } from './addedCitiesAction';
 
 export function fetchWeatherByCityName(cityName) {
  return function(dispatch) {
