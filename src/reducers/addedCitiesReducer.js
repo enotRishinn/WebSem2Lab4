@@ -24,9 +24,8 @@ export default function addedCitiesReducer(state = initialState, action) {
       break;
 
     case 'FETCH_ADDED_CITY_SUCCESS':
-      const forecast = extractWeatherParams(action.payload.response);
       state.added_cities.delete(action.payload.cityName);
-      state.added_cities.set(forecast.cityName, forecast);
+      state.added_cities.set(forecast.cityName, action.payload.response);
       break;
 
     case 'FETCH_ADDED_CITY_ERROR':
