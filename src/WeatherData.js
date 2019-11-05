@@ -4,11 +4,11 @@ import './WeatherData.css';
 class WeatherData extends React.Component {
   render() {
     return (
-      <div>
+      <div className="WeatherBlock">
         <div className="leftWeather">
-          <div className="City">City: {this.props.data.name}</div>
-          <div className="Temp">Temperature: {Math.round(this.props.data.main.temp)} °C</div>
+          <div className="City">{this.props.data.name}</div>
           <img className="Icon" src={`https://openweathermap.org/img/wn/${this.props.data.weather[0].icon}.png`} />
+          <div className="Temp">{Math.round(this.props.data.main.temp)} °C</div>
         </div>
 
         <div className="rightWeather">

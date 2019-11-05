@@ -1,0 +1,41 @@
+.WeatherBlock {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.leftWeather {
+  width: 50%;
+  float: left;
+}
+
+.rightWeather {
+  padding-top: 5%;
+}
+
+.City {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.Icon {
+  float: left;
+  margin: 70px;
+  margin-left: 10px;
+  border: 2px #3d485b ridge;
+}
+
+.Temp {
+  margin: 72px;
+  font-size: 40px;
+}
+
+.Pressure, .Humidity, .Wind, .Clouds, .Coords {
+  font-family: sans-serif;
+  margin-left: 50%;
+  background-color: rgba(197, 204, 213, 0.7);
+  background-repeat: no-repeat;
+  padding: 1%;
+  border-style: ridge;
+  border-color: #3d485b;
+  border-width: 3px;
+}
