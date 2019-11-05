@@ -10,4 +10,27 @@ class AddedCities extends React.Component {
   }
 }
 
-export default AddedCities;
+function mapStateToProps(state) {
+  return {
+    added_cities: state.added_cities.cityName,
+    error: state.added_cities.error
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addCity: (cityName) => {
+      dispatch(addFavorite(cityName));
+    },
+
+    deleteCity: (cityName) => {
+      dispatch(deleteFavorite(cityName));
+    },
+
+    fetchWeatherByCityName: (cityName) => {
+      dispatch(fetchWeatherByCityName(cityName));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(added_cities);
