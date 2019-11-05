@@ -1,6 +1,6 @@
 import React from 'react';
 import './Geolocation.css';
-import WeatherGeolocation from './WeatherGeolocation'
+import WeatherData from './WeatherData'
 import { connect } from "react-redux";
 import { setCoords, fetchGeolocationError } from './actions/geolocationAction';
 import { fetchWeatherByCoords } from './actions/fetchWeatherByCoords';
@@ -11,17 +11,18 @@ class Geolocation extends React.Component {
   }
 
   render() {
+    let weatherBlock = null;
+    if(this.props.forecast) {
+      weatherBlock = <WeatherData data={this.props.forecast}/>;
+    } else if (!this.props.error){
+      weatherBlock = <div className="error">Error: {this.props.error}</div>;
+    }
+
     return (
       <div className="header">
         <div className="headerText">Weather here</div>
         <button className="headerButton" onClick={() => this.getGeolocation()}>Update Geolocation</button>
-        {!this.props.error ? this.props.coords && (
-          <WeatherGeolocation
-            onFetch={() => this.props.fetchWeatherByCoords(this.props.coords)}
-            forecast={this.props.forecast}/>
-        ) : (
-          <div className="error">Error: {this.props.error}</div>
-        )}
+        {weatherBlock}
       </div>
     );
   }
