@@ -33,4 +33,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(added_cities);
+export default connect(mapStateToProps, mapDispatchToProps)(AddedCities);

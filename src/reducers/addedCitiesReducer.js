@@ -1,6 +1,5 @@
-import { Actions } from "../actions/favActions";
-import getFavoritesFromStorage from "../localStorage";
-import { extractWeatherParams } from "../api";
+import { Actions } from "./actions/addedCitiesActions";
+import getAddedCitiesFromStorage from "../localStorage";
 
 const initialState = {
   added_cities: getAddedCitiesFromStorage()
@@ -10,7 +9,7 @@ export default function addedCitiesReducer(state = initialState, action) {
   state = {
     ...state,
     error: false,
-    favorites: new Map(state.added.cities)
+    added_cities: new Map(state.added_cities.cities)
   };
 
   switch (action.type) {
