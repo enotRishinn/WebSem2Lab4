@@ -26,7 +26,6 @@ class Geolocation extends React.Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.props.setCoords({lat: position.coords.latitude, lon: position.coords.longitude});
-        console.log(this.props.coords);
         this.props.fetchWeatherByCoords(this.props.coords);
         console.log(this.props.forecast);
       },
