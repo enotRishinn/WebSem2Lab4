@@ -2,8 +2,6 @@ import React from "react";
 
 class WeatherData extends React.Component {
   render() {
-    console.log(`https://openweathermap.org/img/wn/${this.props.data.weather[0].icon}.png`);
-
     return (
       <div>
         <div>City: {this.props.data.name}</div>

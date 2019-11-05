@@ -4,6 +4,7 @@ import WeatherData from './WeatherData'
 import { connect } from "react-redux";
 import { setCoords, fetchGeolocationError } from './actions/geolocationAction';
 import { fetchWeatherByCoords } from './actions/fetchWeatherByCoords';
+import Header from './Header'
 
 class Geolocation extends React.Component {
   componentDidMount() {
@@ -11,17 +12,10 @@ class Geolocation extends React.Component {
   }
 
   render() {
-    let weatherBlock = null;
-    if(this.props.forecast) {
-      weatherBlock = <WeatherData data={this.props.forecast}/>;
-    } else if (!this.props.error){
-      weatherBlock = <div className="error">Error: {this.props.error}</div>;
-    }
-
+    let weatherBlock = this.setWeatherBlock();
     return (
-      <div className="header">
-        <div className="headerText">Weather here</div>
-        <button className="headerButton" onClick={() => this.getGeolocation()}>Update Geolocation</button>
+      <div>
+        <Header updateGeolocation = {this.getGeolocation.bind(this)}/>
         {weatherBlock}
       </div>
     );
@@ -33,6 +27,8 @@ class Geolocation extends React.Component {
         this.props.setCoords({lat: position.coords.latitude, lon: position.coords.longitude});
         console.log(this.props.coords);
         this.props.fetchWeatherByCoords(this.props.coords);
+        console.log(this.props.forecast);
+        console.log('gshjkds');
       },
       () => {
         this.props.setCoords({lat: 55.45, lon: 37.36});
@@ -42,6 +38,17 @@ class Geolocation extends React.Component {
       this.props.fetchGeolocationError('your browser does not support geolocation');
     }
   }
+
+  setWeatherBlock ()  {
+    let weatherBlock = null;
+    if(this.props.forecast) {
+      weatherBlock = <WeatherData data={this.props.forecast}/>;
+    } else if (!this.props.error){
+      weatherBlock = <div className="error">Error: {this.props.error}</div>;
+    }
+    return weatherBlock;
+  }
+
 }
 
 
