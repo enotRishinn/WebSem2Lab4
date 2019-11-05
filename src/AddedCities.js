@@ -8,8 +8,13 @@ import { connect } from "react-redux";
 class AddedCities extends React.Component {
   render() {
     return (
-      <AddPanel/>
+      <AddPanel onSubmit={(e) => this.addCity(e)} />
+
     );
+  }
+
+  function addCity() {
+    
   }
 }
 
