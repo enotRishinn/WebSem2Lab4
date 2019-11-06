@@ -16,18 +16,18 @@
 
 Для успешного запуска нужно установить библиотеки redux, react-redux, redux-thunk. Для этого перейдите в консоли в папку с проектом и выполните следующие команды:
 
-'npm install --save redux' 
+"npm install --save redux"
 
-'npm install --save react-redux'
+"npm install --save react-redux"
 
-'npm install --save redux-thunk'
+"npm install --save redux-thunk"
 
 Для корректной работы нужно добавить в проект папку node_modules, для этого в консоли, находясь в папке проекта, нужно выполнить команду:
 
-'npm install'
+"npm install"
 
 Для запуска приложения, запустите команду в консоли (находясь в папке проекта):
 
-'npm start'
+"npm start"
 
 и перейдите в браузере на http://localhost:3000/
