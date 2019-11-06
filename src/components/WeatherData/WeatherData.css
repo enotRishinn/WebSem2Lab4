@@ -4,7 +4,7 @@
 }
 
 .leftWeather {
-  width: 30%;
+  width: 20%;
   float: left;
 }
 
@@ -31,7 +31,7 @@
 
 .Pressure, .Humidity, .Wind, .Clouds, .Coords {
   font-family: sans-serif;
-  margin-left: 30%;
+  margin-left: 20%;
   background-color: rgba(197, 204, 213, 0.7);
   background-repeat: no-repeat;
   padding: 1%;

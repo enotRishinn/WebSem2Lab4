@@ -18,6 +18,7 @@ class WeatherData extends React.Component {
         <div className="leftWeather">
           <img className="Icon" src={`https://openweathermap.org/img/wn/${this.props.data.weather[0].icon}.png`} />
           <div className="Temp">{Math.round(this.props.data.main.temp)} °C</div>
+          {this.props.onDelete && <button className="button" onClick={this.props.onDelete}>Delete</button>}
         </div>
 
         <div className="rightWeather">
@@ -27,7 +28,7 @@ class WeatherData extends React.Component {
           <div className="Wind">Wind: {this.props.data.wind.speed} m/s</div>
           <div className="Coords">Coordinates: [{this.props.data.coord.lon}, {this.props.data.coord.lat}]</div>
         </div>
-        {this.props.onDelete && <button className="button" onClick={this.props.onDelete}>Delete</button>}
+
       </div>
     );
   }
