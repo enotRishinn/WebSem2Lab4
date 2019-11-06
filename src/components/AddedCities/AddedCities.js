@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import AddPanel from '../AddPanel/AddPanel';
-import AddedWeather from '../AddedWeather/AddedWeather';
+import WeatherData from '../WeatherData/WeatherData';
 import { addCity, deleteCity } from '../../actions/addedCitiesAction';
 import { fetchWeatherByCityName } from '../../actions/fetchWeatherByCityName';
 import "./AddedCities.css";
@@ -17,11 +17,11 @@ class AddedCities extends React.Component {
           {
             [...this.props.favorites.entries()].map((entry) => {
               return (
-                <AddedWeather
+                <WeatherData
                   key={entry[0]}
                   onFetch={() => this.props.fetchWeatherByCityName(entry[0])}
                   onDelete={() => this.props.deleteCity(entry[0])}
-                  forecast={entry[1]}/>
+                  data={entry[1]}/>
               );
             })
           }
