@@ -10,10 +10,10 @@ export function fetchWeatherByCityName(cityName) {
               dispatch(fetchAddedCitiesSuccess(json));
             } else {
               let error = json.message;
-              dispatch(fetchAddedCitiesError(error));
+              dispatch(fetchAddedCitiesError(error, cityName));
             }
           });
       },
-      error => dispatch(fetchAddedCitiesError(error)))
+      error => dispatch(fetchAddedCitiesError(error, cityName)))
   }
 }

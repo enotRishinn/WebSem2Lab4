@@ -21,7 +21,7 @@ class AddedCities extends React.Component {
                   key={entry[0]}
                   onFetch={() => this.props.fetchWeatherByCityName(entry[0])}
                   onDelete={() => this.props.deleteCity(entry[0])}
-                  forecast={entry[1]} />
+                  forecast={entry[1]}/>
               );
             })
           }
