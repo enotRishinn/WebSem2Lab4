@@ -1,8 +1,8 @@
-import getFavoritesFromStorage from "../LocalStorage";
+import getAddedCitiesFromStorage from "../localStorage";
 import { setWeatherParamsFromResponse } from "../actions/setWeatherParamsFromResponse";
 
 const initialState = {
-  favorites: getFavoritesFromStorage()
+  favorites: getAddedCitiesFromStorage()
 };
 
 export default function favReducer(state = initialState, action) {
