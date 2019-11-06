@@ -39,22 +39,21 @@ export default class AddedWeather extends React.Component {
     } = this.props;
 
     return (
-      <div className="WeatherBlock">
-        <div className="leftWeather">
-          <div className="City">{cityName}</div>
-          <img className="Icon" src={`https://openweathermap.org/img/wn/${icon}.png`} />
-          <div className="Temp">{Math.round(temperature)} °C</div>
+      <div className="AddWeatherBlock">
+        <div className="AddLeftWeather">
+          <div className="AddCity">{cityName}</div>
+          <img className="AddIcon" src={`https://openweathermap.org/img/wn/${icon}.png`} />
+          <div className="AddTemp">{Math.round(temperature)} °C</div>
         </div>
 
-        <div className="rightWeather">
-          <div className="Pressure">Pressure: {pressure} hPa</div>
-          <div className="Humidity">Humidity: {humidity}%</div>
-          <div className="Clouds">Clouds: {description}</div>
-          <div className="Wind">Wind: {windSpeed} m/s</div>
-          <div className="Coords">Coordinates: [{latitude}, {longitude}]</div>
+        <div className="AddRightWeather">
+          <div className="AddPressure">Pressure: {pressure} hPa</div>
+          <div className="AddHumidity">Humidity: {humidity}%</div>
+          <div className="AddClouds">Clouds: {description}</div>
+          <div className="AddWind">Wind: {windSpeed} m/s</div>
+          <div className="AddCoords">Coordinates: [{latitude}, {longitude}]</div>
         </div>
-
-        {onDelete && <button className="button" onClick={onDelete}>X</button>}
+        <button className="button" onClick={onDelete}>Delete</button>
       </div>
 
     );
