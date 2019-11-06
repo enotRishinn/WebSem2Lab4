@@ -1,5 +1,5 @@
 import getFavoritesFromStorage from "../LocalStorage";
-import { extractWeatherParams } from "../api";
+import { setWeatherParamsFromResponse } from "../actions/setWeatherParamsFromResponse";
 
 const initialState = {
   favorites: getFavoritesFromStorage()
@@ -21,7 +21,7 @@ export default function favReducer(state = initialState, action) {
       state.favorites.delete(action.payload);
       break;
     case 'FETCH_ADDED_CITY_SUCCESS':
-      const forecast = extractWeatherParams(action.payload.response);
+      const forecast = setWeatherParamsFromResponse(action.payload.response);
       state.favorites.delete(action.payload.cityName);
       state.favorites.set(forecast.cityName, forecast);
       break;

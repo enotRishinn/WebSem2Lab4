@@ -15,7 +15,7 @@ class WeatherData extends React.Component {
         <div className="rightWeather">
           <div className="Pressure">Pressure: {this.props.data.main.pressure} hPa</div>
           <div className="Humidity">Humidity: {this.props.data.main.humidity}%</div>
-          <div className="Clouds">Clouds: {this.props.data.clouds.all}%</div>
+          <div className="Clouds">Clouds: {this.props.data.weather[0].description}</div>
           <div className="Wind">Wind: {this.props.data.wind.speed} m/s</div>
           <div className="Coords">Coordinates: [{this.props.data.coord.lon}, {this.props.data.coord.lat}]</div>
         </div>
