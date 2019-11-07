@@ -7,7 +7,7 @@ export function fetchWeatherByCityName(cityName) {
         response.json()
           .then(json => {
             if (response.ok) {
-              dispatch(fetchAddedCitiesSuccess(json));
+              dispatch(fetchAddedCitiesSuccess(json, cityName));
             } else {
               let error = json.message;
               dispatch(fetchAddedCitiesError(error, cityName));
