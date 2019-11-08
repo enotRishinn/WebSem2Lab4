@@ -10,12 +10,12 @@ import "./AddedCities.css";
 class AddedCities extends React.Component {
   render() {
     return (
-      <div className="favorites">
+      <div>
         <AddPanel onSubmit={(e) => this.addNewCity(e)} />
         {this.props.error && <div className="error">Error: {this.props.error}</div>}
-        <div className="forecasts">
+        <div className="weather">
           {
-            [...this.props.favorites.entries()].map((entry) => {
+            [...this.props.added_cities.entries()].map((entry) => {
               return (
                 <WeatherData
                   key={entry[0]}
@@ -39,8 +39,8 @@ class AddedCities extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    favorites: state.fav.favorites,
-    error: state.fav.error
+    added_cities: state.cities.added_cities,
+    error: state.cities.error
   };
 }
 

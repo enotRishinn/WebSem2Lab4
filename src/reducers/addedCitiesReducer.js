@@ -1,31 +1,27 @@
-import getAddedCitiesFromStorage from "../localStorage";
+import getAddedCitiesFromLocalStorage from '../actions/getAddedCitiesFromLocalStorage';
 
-const initialState = {
-  favorites: getAddedCitiesFromStorage()
-};
-
-export default function favReducer(state = initialState, action) {
+export default function addedCitiesReducer(state = {added_cities: getAddedCitiesFromLocalStorage()}, action) {
   state = {
     ...state,
     error: false,
-    favorites: new Map(state.favorites)
+    added_cities: new Map(state.added_cities)
   };
 
   switch (action.type) {
     case 'ADD_CITY':
-      if (!state.favorites.has(action.payload))
-        state.favorites.set(action.payload);
+      if (!state.added_cities.has(action.payload))
+        state.added_cities.set(action.payload);
       break;
     case 'DELETE_CITY':
-      state.favorites.delete(action.payload);
+      state.added_cities.delete(action.payload);
       break;
     case 'FETCH_ADDED_CITY_SUCCESS':
-      state.favorites.delete(action.payload.cityName);
-      state.favorites.set(action.payload.response.name, action.payload.response);
+      state.added_cities.delete(action.payload.cityName);
+      state.added_cities.set(action.payload.response.name, action.payload.response);
       break;
     case 'FETCH_ADDED_CITY_ERROR':
       state.error = action.payload.error;
-      state.favorites.delete(action.payload.cityName);
+      state.added_cities.delete(action.payload.cityName);
       break;
     default:
       break;
