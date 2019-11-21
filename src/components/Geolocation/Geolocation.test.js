@@ -18,11 +18,7 @@ it("Weather data loaded", () => {
 
   const tree = renderer.create(
     <Provider store={store}>
-      <Geolocation
-        setCoords={()=> {}}
-        fetchWeatherByCoords={()=> {}}
-        setLoadingTrue={()=> {}}
-        fetchGeolocationError={()=> {}}/>
+      <Geolocation/>
    </Provider>).toJSON();
   expect(tree).toMatchSnapshot();
 });
@@ -36,11 +32,7 @@ it("Weather data is loading and no forecast", () => {
 
   const tree = renderer.create(
     <Provider store={store}>
-      <Geolocation
-        setCoords={()=> {}}
-        fetchWeatherByCoords={()=> {}}
-        setLoadingTrue={()=> {}}
-        fetchGeolocationError={()=> {}}/>
+      <Geolocation/>
    </Provider>).toJSON();
   expect(tree).toMatchSnapshot();
 });
@@ -55,11 +47,7 @@ it("Weather data is loading and there is forecast", () => {
 
   const tree = renderer.create(
     <Provider store={store}>
-      <Geolocation
-        setCoords={()=> {}}
-        fetchWeatherByCoords={()=> {}}
-        setLoadingTrue={()=> {}}
-        fetchGeolocationError={()=> {}}/>
+      <Geolocation/>
    </Provider>).toJSON();
 
   expect(tree).toMatchSnapshot();
@@ -74,11 +62,42 @@ it("Error", () => {
 
   const tree = renderer.create(
     <Provider store={store}>
-      <Geolocation
-        setCoords={()=> {}}
-        fetchWeatherByCoords={()=> {}}
-        setLoadingTrue={()=> {}}
-        fetchGeolocationError={()=> {}}/>
+      <Geolocation/>
+   </Provider>).toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+it("There are only coords without forecast", () => {
+  const store = testStore({
+    geolocation: {
+          coords: {
+            lat: 10,
+            lon: 51
+          }
+        }
+    });
+
+  const tree = renderer.create(
+    <Provider store={store}>
+      <Geolocation/>
+   </Provider>).toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+it("There are coords with forecast", () => {
+  const store = testStore({
+    geolocation: {
+          coords: {
+            lat: 10,
+            lon: 51
+          },
+          forecast: weatherTestData
+        }
+    });
+
+  const tree = renderer.create(
+    <Provider store={store}>
+      <Geolocation/>
    </Provider>).toJSON();
   expect(tree).toMatchSnapshot();
 });

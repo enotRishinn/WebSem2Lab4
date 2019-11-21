@@ -19,10 +19,7 @@ describe("AddedCities are displayed correctly", () => {
 
       const tree = renderer.create(
         <Provider store={store}>
-          <AddedCities
-            addCity={()=> {}}
-            deleteCity={()=> {}}
-            fetchWeatherByCityName={()=> {}}/>
+          <AddedCities/>
        </Provider>).toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -36,10 +33,7 @@ describe("AddedCities are displayed correctly", () => {
         });
       const tree = renderer.create(
         <Provider store={store}>
-          <AddedCities
-            addCity={()=> {}}
-            deleteCity={()=> {}}
-            fetchWeatherByCityName={()=> {}}/>
+          <AddedCities/>
        </Provider>).toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -58,10 +52,7 @@ describe("Error", () => {
 
       const tree = renderer.create(
         <Provider store={store}>
-          <AddedCities
-            addCity={()=> {}}
-            deleteCity={()=> {}}
-            fetchWeatherByCityName={()=> {}}/>
+          <AddedCities/>
        </Provider>).toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -76,10 +67,7 @@ describe("Error", () => {
         });
       const tree = renderer.create(
         <Provider store={store}>
-          <AddedCities
-            addCity={()=> {}}
-            deleteCity={()=> {}}
-            fetchWeatherByCityName={()=> {}}/>
+          <AddedCities/>
        </Provider>).toJSON();
       expect(tree).toMatchSnapshot();
     });
