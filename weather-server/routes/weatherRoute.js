@@ -7,6 +7,7 @@ module.exports = function(app) {
 
   app.get('/weather', async (req, res) => {
     const cityName = req.query.city;
+    console.log(cityName);
     const resp = await fetchWeatherByCityName(cityName);
     res.send(resp);
   });
@@ -19,5 +20,5 @@ module.exports = function(app) {
     const resp = await fetchWeatherByCoords(coords);
     res.send(resp);
   });
-  
+
 };
