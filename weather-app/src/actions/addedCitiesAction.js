@@ -1,17 +1,3 @@
-export function addCity(cityName) {
-  return {
-    type: 'ADD_CITY',
-    payload: cityName
-  };
-}
-
-export function deleteCity(cityName) {
-  return {
-    type: 'DELETE_CITY',
-    payload: cityName
-  };
-}
-
 export function fetchAddedCitiesSuccess(response, cityName) {
   return {
     type: 'FETCH_ADDED_CITY_SUCCESS',
@@ -29,5 +15,12 @@ export function fetchAddedCitiesError(error, cityName) {
       error,
       cityName
     }
+  }
+}
+
+export function setCities(cities) {
+  return {
+    type: 'SET_CITIES',
+    payload: cities
   }
 }

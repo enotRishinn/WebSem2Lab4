@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const weatherRoute = require("./routes/weatherRoute");
-const favoritesRoute = require("./routes/favouritesRoute");
+const favoritesRoute = require("./routes/favoritesRoute");
 
 mongoose.connect("mongodb://localhost:27017/cities",
 {

@@ -1,19 +1,19 @@
-import getAddedCitiesFromLocalStorage from '../actions/getAddedCitiesFromLocalStorage';
-
-export default function addedCitiesReducer(state = {added_cities: getAddedCitiesFromLocalStorage()}, action) {
+export default function addedCitiesReducer(state, action) {
   state = {
     ...state,
-    error: false,
-    added_cities: new Map(state.added_cities)
+    error: false
   };
 
   switch (action.type) {
-    case 'ADD_CITY':
-      if (!state.added_cities.has(action.payload))
-        state.added_cities.set(action.payload);
-      break;
-    case 'DELETE_CITY':
-      state.added_cities.delete(action.payload);
+    case 'SET_CITIES':
+      if (!state.added_cities) state = {
+        ...state,
+        added_cities: new Map()
+      };
+      action.payload.forEach(function(city){
+        state.added_cities.set(city);
+      })
+      console.log('reducer', state.added_cities);
       break;
     case 'FETCH_ADDED_CITY_SUCCESS':
       state.added_cities.delete(action.payload.cityName);

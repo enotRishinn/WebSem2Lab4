@@ -8,6 +8,7 @@ class WeatherData extends React.Component {
   }
 
   render() {
+    console.log('data', this.props.data);
     if (!this.props.data) {
         return <Loader />
     }

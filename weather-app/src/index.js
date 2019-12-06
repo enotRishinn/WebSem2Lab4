@@ -15,10 +15,6 @@ cities : addedCitiesReducer,
 })
 , applyMiddleware(thunk));
 
-weatherStore.subscribe(() => {
-  localStorage.setItem('added_cities', JSON.stringify([...weatherStore.getState().cities.added_cities.keys()]));
-});
-
 ReactDOM.render(
 <Provider store = {weatherStore}>
   <App />
