@@ -26,7 +26,7 @@ class AddedCities extends React.Component {
                 <WeatherData
                   key={entry[0]}
                   onFetch={() => this.props.fetchWeatherByCityName(entry[0])}
-                  onDelete={() => this.props.deleteCityFromBD(entry[0])}
+                  onDelete={() => deleteCityFromBD(entry[0])}
                   data={entry[1]}/>
               );
             })
@@ -39,7 +39,7 @@ class AddedCities extends React.Component {
 
   addNewCity(e) {
     e.preventDefault();
-    this.props.addCityToBD(e.currentTarget.elements.cityName.value);
+    addCityToBD(e.currentTarget.elements.cityName.value);
   }
 }
 
