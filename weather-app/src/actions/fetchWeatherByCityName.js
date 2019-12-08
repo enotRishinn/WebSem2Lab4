@@ -1,19 +1,20 @@
 import { fetchAddedCitiesSuccess, fetchAddedCitiesError } from './addedCitiesAction';
-
+import { deleteCity } from './fetchToServerFavorites';
 export function fetchWeatherByCityName(cityName) {
  return function(dispatch) {
     fetch(`/weather?city=${cityName}`)
       .then(response => {
         response.json()
           .then(json => {
-            if (!response.message) {
+            if (!json.message) {
               dispatch(fetchAddedCitiesSuccess(json, cityName));
             } else {
               let error = json.message;
-              dispatch(fetchAddedCitiesError(error, cityName));
+              dispatch(deleteCity(cityName, error));
             }
           });
-      },
-      error => dispatch(fetchAddedCitiesError(error, cityName)))
+      }).catch(function(e){
+        dispatch(fetchAddedCitiesError(e));
+      })
   }
 }

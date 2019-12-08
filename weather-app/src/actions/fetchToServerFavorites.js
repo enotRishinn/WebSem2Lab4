@@ -1,4 +1,4 @@
-import { setCities } from './addedCitiesAction';
+import { setCities, addCityAction, deleteCityAction, fetchAddedCitiesError } from './addedCitiesAction';
 
 export function getAddedCities() {
   return function(dispatch) {
@@ -9,7 +9,8 @@ export function getAddedCities() {
             json.forEach(function(city){
               added_cities.push(city.city);
             });
-            dispatch(setCities(added_cities));
+            let map = new Map(added_cities.map(cityName => [cityName]));
+            dispatch(setCities(map));
           });
       }).catch(function(error){
         console.log(error);
@@ -17,30 +18,36 @@ export function getAddedCities() {
   }
 }
 
-export function addCityToBD(cityName) {
-    fetch(`/favorites?city=${cityName}`, {
+
+export function addCity(city) {
+  return function(dispatch) {
+    fetch(`/favorites?city=${city}`, {
         method: 'POST'
     }).then(response => {
         response.json()
           .then(json => {
-            console.log('add')
+            if(!json.message){
+              dispatch(addCityAction(city));
+            } else {
+              dispatch(fetchAddedCitiesError(json.message));
+            }
           });
       }).catch(function(error){
-        console.log(error);
       });
-      getAddedCities();
+  }
 }
 
-export function deleteCityFromBD(cityName) {
-    fetch(`/favorites?city=${cityName}`, {
+export function deleteCity(city, error) {
+  return function(dispatch) {
+    fetch(`/favorites?city=${city}`, {
         method: 'DELETE',
     }).then(response => {
         response.json()
           .then(json => {
-            console.log('delete')
+            dispatch(deleteCityAction(city, error));
           });
       }).catch(function(error){
         console.log(error);
       });
-      getAddedCities();
+  }
 }

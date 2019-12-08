@@ -26,13 +26,29 @@ module.exports = function(app) {
       city: cityName
     });
 
-    await city.save(function(err){
+    let isHave;
+
+    await City.findOne({city: cityName}, function(err, doc){
         if(err) {
-          res.send({ message: err });
+          console.log(err);
         } else {
-          res.send(city);
+          if (!doc) {
+            isHave = false;
+          } else {
+            isHave = true;
+          }
         }
     });
+
+    if (!isHave) {
+      await city.save(function(err){
+          if(err) {
+            res.send({ message: err });
+          } else {
+            res.send(city);
+          }
+      });
+    } else res.send({message: 'This city already exists'});
   });
 
 

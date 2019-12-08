@@ -1,4 +1,4 @@
-import { fetchGeolocationSuccess, fetchGeolocationError, setLoadingTrue, setLoadingFalse } from './geolocationAction';
+import { fetchGeolocationSuccess, fetchGeolocationError } from './geolocationAction';
 
 export function fetchWeatherByCoords(coords) {
  return function(dispatch) {
@@ -6,14 +6,15 @@ export function fetchWeatherByCoords(coords) {
       .then(response => {
         response.json()
           .then(json => {
-            if (!response.message) {
+            if (!json.message) {
               dispatch(fetchGeolocationSuccess(json));
             } else {
               let error = json.message;
               dispatch(fetchGeolocationError(error));
             }
           });
-      },
-      error => dispatch(fetchGeolocationError(error)));
+      }).catch(function(e){
+        dispatch(fetchGeolocationError(e));
+      })
   }
 }

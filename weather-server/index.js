@@ -1,15 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const weatherRoute = require("./routes/weatherRoute");
-const favoritesRoute = require("./routes/favoritesRoute");
+const weatherRoute = require('./routes/weatherRoute');
+const favoritesRoute = require('./routes/favoritesRoute');
 
-mongoose.connect("mongodb://localhost:27017/cities",
+mongoose.connect('mongodb://localhost:27017/cities',
 {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
-  console.log("Connected to database");
+  console.log('Connected to database');
 }).catch((e) => {
   console.log('Error connecting to database');
 });
@@ -25,6 +25,6 @@ app.listen(3001, function(e){
       console.error(e);
     }
     else {
-      console.log(`Running server at port 3001`) ;
+      console.log('Running server at port 3001') ;
     }
 });
